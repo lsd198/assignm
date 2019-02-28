@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@4"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@2.6.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@3"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+      var spec = {"config": {"view": {"width": 400, "height": 300}}, "layer": [{"data": {"name": "data-6165d1ae3e3c84cc470434e27ee877c2"}, "mark": {"type": "line", "color": "#ff0000"}, "encoding": {"x": {"type": "quantitative", "axis": null, "field": "lon", "scale": {"domain": [24.0, 37.6]}}, "y": {"type": "quantitative", "axis": {"grid": true, "orient": "right", "title": "Temperature on Retreat"}, "field": "temp"}}}, {"data": {"name": "data-6165d1ae3e3c84cc470434e27ee877c2"}, "mark": {"type": "text", "dx": 5, "dy": 20, "font": "Cardo", "fontSize": 10}, "encoding": {"text": {"type": "nominal", "field": "label"}, "x": {"type": "quantitative", "axis": null, "field": "lon", "scale": {"domain": [24.0, 37.6]}}, "y": {"type": "quantitative", "axis": {"grid": true, "orient": "right", "title": "Temperature on Retreat"}, "field": "temp"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json", "datasets": {"data-6165d1ae3e3c84cc470434e27ee877c2": [{"lon": 37.6, "temp": 0, "days": 6, "day": "Oct-18", "label": "0\u00b0 Oct 18"}, {"lon": 36.0, "temp": 0, "days": 6, "day": "Oct-24", "label": "0\u00b0 Oct 24"}, {"lon": 33.2, "temp": -9, "days": 16, "day": "Nov-9", "label": "-9\u00b0 Nov 9"}, {"lon": 32.0, "temp": -21, "days": 5, "day": "Nov-14", "label": "-21\u00b0 Nov 14"}, {"lon": 29.2, "temp": -11, "days": 10, "day": null, "label": "-11\u00b0 "}, {"lon": 28.5, "temp": -20, "days": 4, "day": "Nov-28", "label": "-20\u00b0 Nov 28"}, {"lon": 27.2, "temp": -24, "days": 3, "day": "Dec-1", "label": "-24\u00b0 Dec 1"}, {"lon": 26.7, "temp": -30, "days": 5, "day": "Dec-6", "label": "-30\u00b0 Dec 6"}, {"lon": 25.3, "temp": -26, "days": 1, "day": "Dec-7", "label": "-26\u00b0 Dec 7"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+
+  </script>
+</body>
+</html>

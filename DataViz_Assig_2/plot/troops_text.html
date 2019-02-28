@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@4"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@2.6.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@3"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+      var spec = {"config": {"view": {"width": 400, "height": 300}}, "data": {"name": "data-44d8775cbf0507a55159108d475eabcc"}, "mark": {"type": "text", "angle": 280, "font": "Cardo", "fontSize": 7, "fontStyle": "italic"}, "encoding": {"latitude": {"type": "quantitative", "field": "lat"}, "longitude": {"type": "quantitative", "field": "lon"}, "text": {"type": "quantitative", "field": "survivors"}}, "projection": {"type": "mercator"}, "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json", "datasets": {"data-44d8775cbf0507a55159108d475eabcc": [{"lon": 24.39, "lat": 55.550000000000004, "survivors": 22000, "direction": "A", "division": 3}, {"lon": 24.990000000000002, "lat": 56.15, "survivors": 6000, "direction": "A", "division": 3}, {"lon": 24.59, "lat": 54.19, "survivors": 6000, "direction": "R", "division": 3}, {"lon": 24.26, "lat": 55.45, "survivors": 60000, "direction": "A", "division": 2}, {"lon": 25.76, "lat": 55.050000000000004, "survivors": 60000, "direction": "A", "division": 2}, {"lon": 27.66, "lat": 55.95, "survivors": 33000, "direction": "A", "division": 2}, {"lon": 28.96, "lat": 55.29, "survivors": 30000, "direction": "R", "division": 2}, {"lon": 28.76, "lat": 53.99, "survivors": 30000, "direction": "R", "division": 2}, {"lon": 27.76, "lat": 54.29, "survivors": 20000, "direction": "R", "division": 2}, {"lon": 27.060000000000002, "lat": 54.089999999999996, "survivors": 12000, "direction": "R", "division": 2}, {"lon": 24.66, "lat": 54.19, "survivors": 4000, "direction": "R", "division": 2}, {"lon": 24.360000000000003, "lat": 54.089999999999996, "survivors": 4000, "direction": "R", "division": 2}, {"lon": 24.63, "lat": 55.35, "survivors": 340000, "direction": "A", "division": 1}, {"lon": 26.13, "lat": 55.050000000000004, "survivors": 320000, "direction": "A", "division": 1}, {"lon": 28.13, "lat": 55.25, "survivors": 280000, "direction": "A", "division": 1}, {"lon": 29.13, "lat": 55.45, "survivors": 210000, "direction": "A", "division": 1}, {"lon": 30.43, "lat": 55.65, "survivors": 175000, "direction": "A", "division": 1}, {"lon": 33.330000000000005, "lat": 55.25, "survivors": 140000, "direction": "A", "division": 1}, {"lon": 35.63, "lat": 55.75, "survivors": 100000, "direction": "A", "division": 1}, {"lon": 37.730000000000004, "lat": 56.15, "survivors": 100000, "direction": "A", "division": 1}, {"lon": 37.63, "lat": 55.49, "survivors": 98000, "direction": "R", "division": 1}, {"lon": 36.93, "lat": 54.79, "survivors": 96000, "direction": "R", "division": 1}, {"lon": 34.43, "lat": 54.99, "survivors": 55000, "direction": "R", "division": 1}, {"lon": 32.13, "lat": 54.39, "survivors": 24000, "direction": "R", "division": 1}, {"lon": 29.33, "lat": 54.19, "survivors": 20000, "direction": "R", "division": 1}, {"lon": 28.43, "lat": 54.19, "survivors": 20000, "direction": "R", "division": 1}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+
+  </script>
+</body>
+</html>
